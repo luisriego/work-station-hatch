@@ -1,0 +1,15 @@
+user_controllers:
+    resource: ../../src/User/Controller/
+    type: annotation
+    prefix: /api/users
+    trailing_slash_on_root: false
+
+module_a_controllers:
+    resource: ../../src/ModuleA/Controller/
+    type: annotation
+    prefix: /api/module-a
+    trailing_slash_on_root: false
+
+kernel:
+    resource: ../../src/Kernel.php
+    type: annotation
