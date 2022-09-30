@@ -1,8 +1,8 @@
 version: '3.5'
 
 services:
-  mmt-web:
-    container_name: mmt-web
+  work-station-hatch-web:
+    container_name: work-station-hatch-web
     build:
       context: ./docker/nginx
       args:
@@ -12,12 +12,12 @@ services:
     volumes:
       - ./public:/appdata/www/public
     depends_on:
-      - mmt-be
+      - work-station-hatch-be
     networks:
-      - mmt-network
+      - work-station-hatch-network
 
-  mmt-be:
-    container_name: mmt-be
+  work-station-hatch-be:
+    container_name: work-station-hatch-be
     build:
       context: docker/php
       args:
@@ -31,14 +31,14 @@ services:
     environment:
       XDEBUG_CLIENT_HOST: 172.17.0.1
       XDEBUG_CLIENT_PORT: 9003
-      PHP_IDE_CONFIG: serverName=mmt-server
+      PHP_IDE_CONFIG: serverName=work-station-hatch-server
     ports:
       - '1100:8000'
     networks:
-      - mmt-network
+      - work-station-hatch-network
 
-  mmt-mysql:
-    container_name: mmt-mysql
+  work-station-hatch-mysql:
+    container_name: work-station-hatch-mysql
     build:
       context: ./docker/database
     ports:
@@ -47,19 +47,19 @@ services:
       MYSQL_DATABASE: user_db
       MYSQL_ROOT_PASSWORD: root
     volumes:
-      - mmt-mysql-data:/var/lib/mysql
+      - work-station-hatch-mysql-data:/var/lib/mysql
     networks:
-      - mmt-network
+      - work-station-hatch-network
     command: [ 'mysqld', '--character-set-server=utf8mb4', '--collation-server=utf8mb4_unicode_ci' ]
 
-#  mmt-rabbit:
-#    container_name: mmt-rabbitmq
+#  work-station-hatch-rabbit:
+#    container_name: work-station-hatch-rabbitmq
 #    image: rabbitmq:3-management-alpine
 #    ports:
 #      - '5672:5672'
 #      - '15672:15672'
 #    networks:
-#      - mmt-network
+#      - work-station-hatch-network
 #
 ####> doctrine/doctrine-bundle ###
 #  database:
@@ -76,11 +76,11 @@ services:
 ####< doctrine/doctrine-bundle ###
 
 volumes:
-#  mmt-pgsql-data:
+#  work-station-hatch-pgsql-data:
 #  db-data:
 
-  mmt-mysql-data:
+  work-station-hatch-mysql-data:
 
 networks:
-  mmt-network:
+  work-station-hatch-network:
 #    external: true

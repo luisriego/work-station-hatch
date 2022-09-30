@@ -35,7 +35,7 @@
         "psr-4": {
             "App\\": "src/",
             "User\\": "src/User",
-            "ModuleA\\": "src/ModuleA"
+            "Workstation\\": "src/Workstation"
         }
     },
     "autoload-dev": {

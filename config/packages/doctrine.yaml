@@ -4,8 +4,8 @@ doctrine:
         connections:
             user_connection:
                 url: '%env(resolve:DATABASE_URL_USER)%'
-            module_a_connection:
-                url: '%env(resolve:DATABASE_URL_MODULE_A)%'
+            workstation_connection:
+                url: '%env(resolve:DATABASE_URL_WORKSTATION)%'
     orm:
         default_entity_manager: user_em
         entity_managers:
@@ -19,15 +19,15 @@ doctrine:
 #                        dir: '%kernel.project_dir%/src/Customer/Adapter/Database/ORM/Doctrine/Mapping'
                         prefix: 'User\Entity'
                         alias: User\Entity
-            module_a_em:
-                connection: module_a_connection
+            workstation_em:
+                connection: workstation_connection
                 mappings:
-                    ModuleA:
+                    Workstation:
                         is_bundle: false
                         type: xml
-                        dir: '%kernel.project_dir%/config/orm/mapping/module_a'
-                        prefix: 'ModuleA\Entity'
-                        alias: ModuleA
+                        dir: '%kernel.project_dir%/config/orm/mapping/workstation'
+                        prefix: 'Workstation\Entity'
+                        alias: Workstation\Entity
 
 when@test:
     doctrine:

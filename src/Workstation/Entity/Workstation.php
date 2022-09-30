@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace ModuleA\Entity;
+namespace Workstation\Entity;
 
-class ModuleA
+class Workstation
 {
     public function __construct(private readonly string $id)
     {

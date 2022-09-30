@@ -46,7 +46,7 @@ This repository contains the basic configuration for a complete local environmen
     ###> symfony/messenger ###
     # Choose one of the transports below
     # MESSENGER_TRANSPORT_DSN=doctrine://default
-    MESSENGER_TRANSPORT_DSN=amqp://guest:guest@mmt-rabbitmq:5672/%2f/messages
+    MESSENGER_TRANSPORT_DSN=amqp://guest:guest@work-station-hatch-rabbitmq:5672/%2f/messages
     # MESSENGER_TRANSPORT_DSN=redis://localhost:6379/messages
     ###< symfony/messenger ###
 
