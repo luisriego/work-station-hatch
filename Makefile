@@ -50,8 +50,13 @@ logs: ## Show Symfony logs in real time
 ssh-be: ## bash into the be container
 	U_ID=${UID} docker exec -it --user ${UID} ${DOCKER_BE} bash
 
-code-style: ## Runs php-cs to fix code styling following Symfony rules
-	U_ID=${UID} docker exec --user ${UID} ${DOCKER_BE} php-cs-fixer fix src --rules=@Symfony
+#code-style: ## Runs php-cs to fix code styling following Symfony rules
+#	U_ID=${UID} docker exec --user ${UID} ${DOCKER_BE} php-cs-fixer fix src --rules=@Symfony
+code-style:
+	U_ID=${UID} docker exec --user ${UID} ${DOCKER_BE} vendor/bin/php-cs-fixer fix src --rules=@Symfony
+
+code-style-check:
+	U_ID=${UID} docker exec --user ${UID} ${DOCKER_BE} vendor/bin/php-cs-fixer fix src --rules=@Symfony --dry-run
 
 # .PHONY: migrations
 
