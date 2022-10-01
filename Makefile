@@ -58,6 +58,10 @@ code-style:
 code-style-check:
 	U_ID=${UID} docker exec --user ${UID} ${DOCKER_BE} vendor/bin/php-cs-fixer fix src --rules=@Symfony --dry-run
 
+.PHONY: migrations migrations-test
+migrations-test: ## Run migrations for test environments
+	U_ID=${UID} docker exec --user ${UID} ${DOCKER_BE} bin/console doctrine:migration:migrate -n --env=test
+
 .PHONY: tests
 tests:
 	U_ID=${UID} docker exec --user ${UID} ${DOCKER_BE} vendor/bin/simple-phpunit -c phpunit.xml.dist
