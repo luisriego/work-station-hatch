@@ -5,9 +5,9 @@ user_controllers:
     trailing_slash_on_root: false
 
 workstation_controllers:
-    resource: ../../src/Workstation/Controller/
+    resource: ../../src/Workstation/Adapter/Framework/Http/Controller/
     type: annotation
-    prefix: /api/module-a
+    prefix: /api/workstations
     trailing_slash_on_root: false
 
 kernel:
