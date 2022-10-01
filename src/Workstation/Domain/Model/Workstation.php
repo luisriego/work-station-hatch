@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Workstation\Entity;
+namespace Workstation\Domain\Model;
 
 class Workstation
 {
