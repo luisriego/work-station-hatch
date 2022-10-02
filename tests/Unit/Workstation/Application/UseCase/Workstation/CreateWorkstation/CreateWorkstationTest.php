@@ -30,7 +30,7 @@ class CreateWorkstationTest extends TestCase
         $this->useCase = new CreateWorkstation($this->workstationRepository);
     }
 
-    public function testCreateCustomer(): void
+    public function testCreateWorkstation(): void
     {
         $valueObject = CreateWorkstationInputValueObject::create(
             self::VALUES['name'],
