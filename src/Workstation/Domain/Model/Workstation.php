@@ -19,7 +19,7 @@ class Workstation
         return new static($id, $name, $floor, $office);
     }
 
-    public function getId(): string
+    public function id(): string
     {
         return $this->id;
     }

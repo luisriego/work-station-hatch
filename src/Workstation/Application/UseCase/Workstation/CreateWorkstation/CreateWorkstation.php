@@ -27,6 +27,6 @@ class CreateWorkstation
 
         $this->workstationRepository->save($workstation);
 
-        return new CreateWorkstationOutputValueObject($workstation->getId());
+        return new CreateWorkstationOutputValueObject($workstation->id());
     }
 }
