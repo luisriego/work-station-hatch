@@ -11,8 +11,7 @@ class Workstation
         private ?string $name,
         private ?string $floor,
         private ?string $office
-    )
-    {
+    ) {
     }
 
     public static function create(string $id, ?string $name, ?string $floor, ?string $office): self
