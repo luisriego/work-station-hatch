@@ -11,4 +11,6 @@ interface WorkstationRepositoryInterface
     public function findOneByIdOrFail(string $id): Workstation;
 
     public function save(Workstation $workstation): void;
+
+    public function remove(Workstation $workstation): void;
 }

@@ -37,4 +37,10 @@ class DoctrineWorkstationRepository implements WorkstationRepositoryInterface
         $this->manager->persist($workstation);
         $this->manager->flush();
     }
+
+    public function remove(Workstation $workstation): void
+    {
+        $this->manager->remove($workstation);
+        $this->manager->flush();
+    }
 }
