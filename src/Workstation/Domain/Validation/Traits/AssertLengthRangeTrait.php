@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Customer\Domain\Validation\Traits;
+namespace Workstation\Domain\Validation\Traits;
 
-use Customer\Domain\Exception\InvalidArgumentException;
+use App\Workstation\Domain\Exception\InvalidArgumentException;
 
 trait AssertLengthRangeTrait
 {

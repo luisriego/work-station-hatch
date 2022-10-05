@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Workstation\Application\UseCase\Workstation\CreateWorkstation\ValueObject;
 
-class CreateWorkstationInputValueObject
+class CreateWorkstationInputVO
 {
     private function __construct(
         public readonly ?string $name,

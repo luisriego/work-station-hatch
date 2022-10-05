@@ -6,8 +6,8 @@ namespace App\Tests\Unit\Workstation\Application\UseCase\Workstation\CreateWorks
 
 
 use App\Workstation\Application\UseCase\Workstation\CreateWorkstation\CreateWorkstation;
-use App\Workstation\Application\UseCase\Workstation\CreateWorkstation\ValueObject\CreateWorkstationInputValueObject;
-use App\Workstation\Application\UseCase\Workstation\CreateWorkstation\ValueObject\CreateWorkstationOutputValueObject;
+use App\Workstation\Application\UseCase\Workstation\CreateWorkstation\ValueObject\CreateWorkstationInputVO;
+use App\Workstation\Application\UseCase\Workstation\CreateWorkstation\ValueObject\CreateWorkstationOutputVO;
 use App\Workstation\Domain\Repository\WorkstationRepositoryInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -32,7 +32,7 @@ class CreateWorkstationTest extends TestCase
 
     public function testCreateWorkstation(): void
     {
-        $valueObject = CreateWorkstationInputValueObject::create(
+        $valueObject = CreateWorkstationInputVO::create(
             self::VALUES['name'],
             self::VALUES['floor'],
             self::VALUES['office'],
@@ -51,6 +51,6 @@ class CreateWorkstationTest extends TestCase
 
         $responseValueObject = $this->useCase->handle($valueObject);
 
-        self::assertInstanceOf(CreateWorkstationOutputValueObject::class, $responseValueObject);
+        self::assertInstanceOf(CreateWorkstationOutputVO::class, $responseValueObject);
     }
 }
