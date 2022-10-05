@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Workstation\Application\UseCase\Workstation\UpdateWorkstation\ValueObject;
 
-use Workstation\Domain\Validation\Traits\AssertLengthRangeTrait;
 use Workstation\Domain\Model\Workstation;
+use Workstation\Domain\Validation\Traits\AssertLengthRangeTrait;
 use Workstation\Domain\Validation\Traits\AssertNotNullTrait;
 
 class UpdateWorkstationInputVO
