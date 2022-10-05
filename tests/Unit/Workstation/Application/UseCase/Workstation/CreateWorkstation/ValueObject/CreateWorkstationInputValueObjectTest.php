@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Unit\Customer\Application\UseCase\Workstation\CreateWorkstation\ValueObject;
+namespace App\Tests\Unit\Workstation\Application\UseCase\Workstation\CreateWorkstation\ValueObject;
 
-use App\Workstation\Application\UseCase\Workstation\CreateWorkstation\ValueObject\CreateWorkstationInputValueObject;
+use App\Workstation\Application\UseCase\Workstation\CreateWorkstation\ValueObject\CreateWorkstationInputVO;
 use PHPUnit\Framework\TestCase;
 
 class CreateWorkstationInputValueObjectTest extends TestCase
@@ -17,13 +17,13 @@ class CreateWorkstationInputValueObjectTest extends TestCase
 
     public function testCreate(): void
     {
-        $valueObject = CreateWorkstationInputValueObject::create(
+        $valueObject = CreateWorkstationInputVO::create(
             self::VALUES['name'],
             self::VALUES['floor'],
             self::VALUES['office'],
         );
 
-        self::assertInstanceOf(CreateWorkstationInputValueObject::class, $valueObject);
+        self::assertInstanceOf(CreateWorkstationInputVO::class, $valueObject);
 
         self::assertEquals(self::VALUES['name'], $valueObject->name);
         self::assertEquals(self::VALUES['floor'], $valueObject->floor);

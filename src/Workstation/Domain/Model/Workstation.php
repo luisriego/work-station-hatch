@@ -6,6 +6,9 @@ namespace Workstation\Domain\Model;
 
 class Workstation
 {
+    public const NAME_MIN_LENGTH = 2;
+    public const NAME_MAX_LENGTH = 10;
+
     public function __construct(
         private readonly string $id,
         private ?string $name,
