@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Reservation\Domain\Model;
 
-
 class Reservation
 {
     public function __construct(
