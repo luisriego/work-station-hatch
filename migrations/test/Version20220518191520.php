@@ -18,20 +18,32 @@ final class Version20220518191520 extends AbstractMigration
     {
         $this->addSql(
             <<<SQL
-                CREATE TABLE `workstation_db_test`.`workstation` (
-                    `id` CHAR(36) PRIMARY KEY NOT NULL,
-                    `name` VARCHAR(50) DEFAULT NULL,
-                    `floor` VARCHAR(4) DEFAULT NULL,
-                    `oficce` VARCHAR(50) DEFAULT NULL,
-                    INDEX IDX_workstation_name (`name`),
-                    INDEX IDX_workstation_oficce (`oficce`)
-                );
-                CREATE TABLE `user_db_test`.`employee` (
+                CREATE TABLE `user_db`.`user` (
                     `id` CHAR(36) PRIMARY KEY NOT NULL,
                     `name` VARCHAR(50) DEFAULT NULL,
                     `email` VARCHAR(100) DEFAULT NULL,
                     `password` VARCHAR(250) DEFAULT NULL,
-                    INDEX IDX_employee_name (`name`)
+                    INDEX IDX_user_name (`name`)
+                );
+                CREATE TABLE `reservation_db`.`reservation` (
+                    `id` CHAR(36) PRIMARY KEY NOT NULL,
+                    `user_id` CHAR(36) NOT NULL,
+                    `workstation_id` CHAR(36) NOT NULL,
+                    `start_date` DATETIME DEFAULT NULL,
+                    `end_date` DATETIME DEFAULT NULL,
+                    `is_active` TINYINT(1) NOT NULL,
+                    `created_on` DATETIME DEFAULT NULL,
+                    INDEX IDX_reservation_workstation_id (`workstation_id`),
+                    INDEX IDX_reservation_user_id (`user_id`)
+                );
+                CREATE TABLE `reservation_db`.`workstation` (
+                    `id` CHAR(36) PRIMARY KEY NOT NULL,
+                    `name` VARCHAR(50) DEFAULT NULL,
+                    `floor` VARCHAR(4) DEFAULT NULL,
+                    `office` VARCHAR(50) DEFAULT NULL,
+                    `is_active` TINYINT(1) NOT NULL,
+                    INDEX IDX_workstation_name (`name`),
+                    INDEX IDX_workstation_oficce (`office`)
                 );
             SQL
         );
@@ -41,10 +53,9 @@ final class Version20220518191520 extends AbstractMigration
     {
         $this->addSql(
             <<<SQL
-                DROP TABLE `rental_db`.`rental`;
-                DROP TABLE `rental_db`.`car`;
-                DROP TABLE `customer_db`.`customer`;
-                DROP TABLE `employee_db`.`employee`;
+                DROP TABLE `reservation_db`.`workstation`;
+                DROP TABLE `reservation_db`.`reservation`;
+                DROP TABLE `user_db`.`user`;
             SQL
         );
     }

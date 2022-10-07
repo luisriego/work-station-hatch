@@ -4,8 +4,14 @@ user_controllers:
     prefix: /api/users
     trailing_slash_on_root: false
 
+reservation_controllers:
+    resource: ../../src/Reservation/Adapter/Framework/Http/Controller/
+    type: annotation
+    prefix: /api/reservations
+    trailing_slash_on_root: false
+
 workstation_controllers:
-    resource: ../../src/Workstation/Adapter/Framework/Http/Controller/
+    resource: ../../src/Reservation/Adapter/Framework/Http/Controller/
     type: annotation
     prefix: /api/workstations
     trailing_slash_on_root: false
