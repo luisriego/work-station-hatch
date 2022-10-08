@@ -3,7 +3,7 @@ services:
     autowire: true      # Automatically injects dependencies in your services.
     autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
 
-  Reservation\Adapter\Framework\Http\Controller\:
+  App\Reservation\Adapter\Framework\Http\Controller\:
     resource: '../../src/Reservation/Adapter/Framework/Http/Controller/'
     tags: [ 'controller.service_arguments' ]
 

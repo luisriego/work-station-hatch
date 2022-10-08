@@ -56,3 +56,13 @@ Happy coding!
 - Insert phpunit testing with composer 'composer require --dev phpunit/phpunit symfony/test-pack'
 - Run `sf d:m:m -n --env=test` to apply migrations on test enviroment
   composer dump-autoload --- when not found files after rename it
+
+Docker provides a single command that will clean up any resources — images, containers, volumes, and networks — that are dangling (not tagged or associated with a container):
+   
+    $ docker system prune
+
+To additionally remove any stopped containers and all unused images (not just dangling images), add the -a flag to the command:
+
+    $ docker system prune -a
+
+https://www.digitalocean.com/community/tutorials/how-to-remove-docker-images-containers-and-volumes
