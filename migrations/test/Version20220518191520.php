@@ -18,14 +18,14 @@ final class Version20220518191520 extends AbstractMigration
     {
         $this->addSql(
             <<<SQL
-                CREATE TABLE `user_db`.`user` (
+                CREATE TABLE `user_db_test`.`user` (
                     `id` CHAR(36) PRIMARY KEY NOT NULL,
                     `name` VARCHAR(50) DEFAULT NULL,
                     `email` VARCHAR(100) DEFAULT NULL,
                     `password` VARCHAR(250) DEFAULT NULL,
                     INDEX IDX_user_name (`name`)
                 );
-                CREATE TABLE `reservation_db`.`reservation` (
+                CREATE TABLE `reservation_db_test`.`reservation` (
                     `id` CHAR(36) PRIMARY KEY NOT NULL,
                     `user_id` CHAR(36) NOT NULL,
                     `workstation_id` CHAR(36) NOT NULL,
@@ -36,7 +36,7 @@ final class Version20220518191520 extends AbstractMigration
                     INDEX IDX_reservation_workstation_id (`workstation_id`),
                     INDEX IDX_reservation_user_id (`user_id`)
                 );
-                CREATE TABLE `reservation_db`.`workstation` (
+                CREATE TABLE `reservation_db_test`.`workstation` (
                     `id` CHAR(36) PRIMARY KEY NOT NULL,
                     `name` VARCHAR(50) DEFAULT NULL,
                     `floor` VARCHAR(4) DEFAULT NULL,
@@ -53,9 +53,9 @@ final class Version20220518191520 extends AbstractMigration
     {
         $this->addSql(
             <<<SQL
-                DROP TABLE `reservation_db`.`workstation`;
-                DROP TABLE `reservation_db`.`reservation`;
-                DROP TABLE `user_db`.`user`;
+                DROP TABLE `reservation_db_test`.`workstation`;
+                DROP TABLE `reservation_db_test`.`reservation`;
+                DROP TABLE `user_db_test`.`user`;
             SQL
         );
     }
