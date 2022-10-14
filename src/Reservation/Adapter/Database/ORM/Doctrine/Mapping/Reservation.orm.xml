@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping">
+    <entity name="App\Reservation\Domain\Model\Reservation" table="reservation">
+        <id name="id" type="string" length="36" column-definition="CHAR(36) NOT NULL"/>
+
+        <field name="startDate" type="datetime" />
+        <field name="endDate" type="datetime" />
+        <field name="userId" length="36" />
+        <field name="isActive" type="boolean" />
+        <field name="createdOn" type="datetime_immutable" />
+
+        <many-to-one field="workstation" target-entity="App\Reservation\Domain\Model\Workstation">
+            <join-column name="workstation_id" on-delete="CASCADE" />
+        </many-to-one>
+
+        <indexes>
+            <index columns="workstation_id" name="IDX_reservation_workstation_id" />
+            <index columns="user_id" name="IDX_reservation_user_id" />
+        </indexes>
+    </entity>
+</doctrine-mapping>
