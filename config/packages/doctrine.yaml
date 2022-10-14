@@ -25,7 +25,8 @@ doctrine:
                     Workstation:
                         is_bundle: false
                         type: xml
-                        dir: '%kernel.project_dir%/config/orm/mapping/reservation'
+#                        dir: '%kernel.project_dir%/config/orm/mapping/reservation'
+                        dir: '%kernel.project_dir%/src/Reservation/Adapter/Database/ORM/Doctrine/Mapping'
                         prefix: 'App\Reservation\Domain\Model'
                         alias: Reservation
 

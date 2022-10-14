@@ -55,7 +55,9 @@ Happy coding!
 ### For testing
 - Insert phpunit testing with composer 'composer require --dev phpunit/phpunit symfony/test-pack'
 - Run `sf d:m:m -n --env=test` to apply migrations on test enviroment
-  composer dump-autoload --- when not found files after rename it
+- Run `bin/phpunit -c phpunit.xml.dist --filter testReservationHealthCheck`
+  
+composer dump-autoload --- when not found files after rename it
 
 Docker provides a single command that will clean up any resources — images, containers, volumes, and networks — that are dangling (not tagged or associated with a container):
    
