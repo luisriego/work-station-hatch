@@ -14,9 +14,9 @@ class HealthCheckControllerTest extends WorkstationControllerTestBase
 
     public function testReservationHealthCheck(): void
     {
-        $this->client->request(Request::METHOD_GET, self::ENDPOINT);
+        self::$client->request(Request::METHOD_GET, self::ENDPOINT);
 
-        $response = $this->client->getResponse();
+        $response = self::$client->getResponse();
         $responseData = json_decode($response->getContent(), true);
 
         self::assertEquals(Response::HTTP_OK, $response->getStatusCode());

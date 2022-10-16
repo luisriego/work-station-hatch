@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Tests\Functional\Reservation\Controller\Workstation;
 
 use App\Tests\Functional\Reservation\Controller\ControllerTestBase;
+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use Symfony\Component\BrowserKit\AbstractBrowser;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -22,7 +24,7 @@ class WorkstationControllerTestBase extends ControllerTestBase
             'isActive' => true,
         ];
 
-        $this->client->request(Request::METHOD_POST, self::CREATE_WORKSTATION_ENDPOINT, [], [], [], \json_encode($payload));
+        self::$client->request(Request::METHOD_POST, self::CREATE_WORKSTATION_ENDPOINT, [], [], [], \json_encode($payload));
 
         $response = self::$client->getResponse();
 
