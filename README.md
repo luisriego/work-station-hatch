@@ -54,7 +54,7 @@ Happy coding!
 
 ### For testing
 - Insert phpunit testing with composer 'composer require --dev phpunit/phpunit symfony/test-pack'
-- Run `sf d:m:m -n --env=test` to apply migrations on test enviroment
+- Run `sf d:m:m -n --env=test` to apply migrations on test environment
 - Run `bin/phpunit -c phpunit.xml.dist --filter testReservationHealthCheck`
   
 composer dump-autoload --- when not found files after rename it

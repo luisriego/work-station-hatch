@@ -30,7 +30,10 @@ build: ## Rebuilds all the containers
 
 prepare: ## Runs backend commands
 	$(MAKE) composer-install
+	$(MAKE) dbs-creation
+	$(MAKE) dbs-creation-test
 	$(MAKE) migrations
+	$(MAKE) migrations-test
 
 run: ## starts the Symfony development server
 	U_ID=${UID} docker exec -it --user ${UID} ${DOCKER_BE} symfony serve -d
@@ -40,10 +43,18 @@ composer-install: ## Installs composer dependencies
 	U_ID=${UID} docker exec --user ${UID} ${DOCKER_BE} composer install --no-interaction
 
 .PHONY: migrations migrations-test
+dbs-creation: ## Create the project databases for dev/prod environments
+	U_ID=${UID} docker exec --user ${UID} ${DOCKER_BE} bin/console doctrine:database:create --connection=user_connection -n
+	U_ID=${UID} docker exec --user ${UID} ${DOCKER_BE} bin/console doctrine:database:create --connection=reservation_connection -n
+
+dbs-creation-test: ## Create the project databases for test environment
+	U_ID=${UID} docker exec --user ${UID} ${DOCKER_BE} bin/console doctrine:database:create --connection=user_connection -n --env=test
+	U_ID=${UID} docker exec --user ${UID} ${DOCKER_BE} bin/console doctrine:database:create --connection=reservation_connection -n --env=test
+
 migrations: ## Run migrations for dev/prod environments
 	U_ID=${UID} docker exec --user ${UID} ${DOCKER_BE} bin/console doctrine:migration:migrate -n
 
-migrations-test: ## Run migrations for test environments
+migrations-test: ## Run migrations for test environment
 	U_ID=${UID} docker exec --user ${UID} ${DOCKER_BE} bin/console doctrine:migration:migrate -n --env=test
 
 logs: ## Show Symfony logs in real time
