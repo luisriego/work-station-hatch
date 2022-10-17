@@ -69,7 +69,7 @@ code-style-check:
 	U_ID=${UID} docker exec --user ${UID} ${DOCKER_BE} vendor/bin/php-cs-fixer fix src --rules=@Symfony --dry-run
 
 .PHONY: tests
-tests:
+test:
 	U_ID=${UID} docker exec --user ${UID} ${DOCKER_BE} vendor/bin/simple-phpunit -c phpunit.xml.dist
 
 ssh-be: ## bash into the be container
