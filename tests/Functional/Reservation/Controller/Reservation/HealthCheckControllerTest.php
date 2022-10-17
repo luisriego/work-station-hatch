@@ -8,18 +8,15 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class HealthCheckControllerTest extends WebTestCase
+class HealthCheckControllerTest extends ReservationControllerTestBase
 {
-    private const ENDPOINT = '/api/reservations/health-check';
+    private const ENDPOINT = self::CREATE_RESERVATION_ENDPOINT.'/health-check';
 
     public function testReservationHealthCheck(): void
     {
-        $client = static::createClient();
-        $client->setServerParameter('CONTENT_TYPE', 'application/json');
+        self::$client->request(Request::METHOD_GET, self::ENDPOINT);
 
-        $client->request(Request::METHOD_GET, self::ENDPOINT);
-
-        $response = $client->getResponse();
+        $response = self::$client->getResponse();
         $responseData = json_decode($response->getContent(), true);
 
         self::assertEquals(Response::HTTP_OK, $response->getStatusCode());
